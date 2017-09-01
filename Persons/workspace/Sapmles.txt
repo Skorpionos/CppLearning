@@ -1,0 +1,78 @@
+void Person::Print()
+{
+    std::cout << m_Name << ", " << (int) m_Birthday << std::endl;
+}
+
+void Node::Print() const
+{
+    std::cout << "<" << this << "> "
+              << data.Name() << ", " << (int) data.Birthday()
+              << "; &=" << next << std::endl;
+}
+
+void List::Print() const
+{
+    std::cout << "<" << this << "> [" << size() << " elements" << "]:" << std::endl;
+
+    Node* node = m_first;
+    while (node)
+    {
+        node->Print();
+        node = node->next;
+    }
+}
+
+#include <fstream>
+std::ofstream fout;
+fout.open("/home/Sergeev/Temp/Test");
+
+fout << list;
+
+#include <list.h>
+
+#include "service.cpp"
+
+#include <iostream>
+#include <string>
+
+#include <list>
+
+Line line;
+
+void Primary()
+{
+    List list;
+
+    Person father = Person("Vladimir Sergeev", 1853);
+    Person mother = Person("Vera Sergeeva", 1855);
+    Person passer1 = Person("Somebody1", 1801);
+    Person me = Person("Alexander Sergeev", 1880);
+    Person wife = Person("Anna Sergeeva", 1882);
+    Person passer2 = Person("Somebody2", 1802);
+
+    Node* node1 = list.Insert(passer1);
+    list.Insert(father);
+    list.Insert(mother);
+    list.Insert(me);
+    Node* node2 = list.Insert(passer2);
+    list.Insert(wife);
+
+    std::cout << list;
+    std::cout << &list << std::endl;
+
+    std::cout << line << *node1 << *node2;
+    std::cout << line;
+
+    list.Delete(node1);
+    list.Delete(node2);
+
+    std::cout << list;
+
+    std::cout << line << passer1 << passer2;
+
+    list.Visit(Add1);
+    std::cout << line << list;
+
+    me += 1;
+    std::cout << me;
+}

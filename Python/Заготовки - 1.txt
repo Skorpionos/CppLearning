@@ -1,0 +1,651 @@
+#C:\Users\Administrator\AppData\Local\Programs\Python\Python36-32\python.exe -i C:\Projects\Python\1.py
+
+
+#http://denisx.ru/tech/prime-number/prime-numbers-list/
+x = 1j
+
+n = int(input())
+
+if n >= 100:
+	print('Слишком много')
+else:	
+	print(x, "^", n, "=",x**n)
+input()
+
+------------------
+N = 10
+s = ""
+for i in range(1, N+1):
+	s = s + str(i)
+	if i != N:
+		s = s + " "
+		print(s)
+
+l = len(s)
+print (l)
+
+-----------------
+A = ['Red', 'Blue', 'Green', 'Yellow', 'Orange']
+B = 2*['Gold'] + 3*['Pink']
+print(A, '\n', B)
+C = A + B
+
+for i in C:
+	print(i, end = ' ')
+
+# Индекс элемента (поиск)	
+print(A.index('Yellow'))	
+	
+---------------------
+s = 'ab12c59p7dq'
+digits = []
+for symbol in s:
+    if '1234567890'.find(symbol) != -1:
+        digits.append(int(symbol))
+print(digits)
+
+#---------------------
+s = input()
+A = s.split()
+B = [int(str) for str in A]
+print(B)
+
+#---------------------
+X = '192.168.0.1'.split('.')
+Y = '-'.join(X)
+print(Y)
+	
+#------------------
+a = [1, 2, 3]
+print(' '.join([str(i) for i in a]))
+	
+#------------------
+N = 10
+X = [i**2 for i in range(1, N+1)]
+print(X)		
+
+#-------------------
+from random import randrange
+n = 10
+a = [randrange(1, 10) for i in range(n)]	
+
+#-------------------	
+a = [input() for i in range(int(input()))]
+
+''' 
+Многострочный
+ комментарий
+'''
+
+"""
+Многострочная
+ константа
+"""
+
+#------------------
+# Простые числа
+from math import sqrt
+
+def find_simple(N):	
+	A = [2]
+	for i in range(3, N+1):
+		j = 0
+		simple = True
+		while A[j] <= sqrt(i):
+			if i%A[j] == 0:
+				simple = False
+				break
+			j = j + 1
+		if simple: A.append(i)	
+	return A
+
+A = find_simple(1000);
+
+print(' '.join([str(i) for i in A[-5:]]))
+print('Total: ', len(A))
+
+input()
+
+------------------------
+A = find_simple(1000000);
+
+B = [i for i in range(950000,951000) if i in A]
+print(B)
+
+-----------------------
+def max(*a):
+    res = a[0]
+    for val in a[1:]:
+        if val > res:
+            res = val
+    return res
+
+print(max(3, 5, 4))
+	
+#------------------
+def fact(n):
+	if n > 1:
+		return n*fact(n-1)	
+	else:
+		return n
+print(fact(100))
+	
+#------------------
+A = [[1,2,3,4],
+	 [5,6,7,8]]
+
+for i in range(len(A)):
+    for j in range(len(A[i])):
+        print(A[i][j], end=' ')
+    print()
+#---------------
+for i in A:
+	for j in i:
+		print(j, end=' ')
+	print()	
+	
+#------------------
+def PrintMatrix(A):
+	for i in A:
+		for j in i:
+			print(j, end=' ')
+		print()
+
+M, N = 5, 10
+A = [N*[0] for i in range(N)]
+PrintMatrix(A)	
+	
+#------------------
+def CreateMatrix(M,N):
+return [N*[0] for i in range(N)]
+
+A = CreateMatrix(5, 10)
+A[5][9] = 5+15j
+PrintMatrix(A)
+
+#------------------	
+A = [[i*j for j in range(1,11)] for i in range(1,11)]	
+
+#------------------	
+# Множества. Set {}
+A = {1,2,3}
+B = list(A)
+print(B)
+print(1 in B)	
+	
+#------------------
+Capitals = {
+	'Russia' 		: 'Moscow',
+	'Kazakhstan' 	: 'Astana'
+}
+
+Countries = [
+	'Russia',
+	'Italy',
+	'Belarus',
+	'Kazakhstan',
+	'Germany'
+]
+
+for i in Countries:
+	if i in Capitals:
+		print(i, '-' ,Capitals[i])
+	else:
+		print(i, '- No information')	
+	
+#------------------
+A = dict(zip('abcdef', list(range(6))))
+for key, val in A.items():
+    print(key, val)	
+
+#------------------
+A = [1,2,3,4,0,1]
+print(any(Ai == 1 for Ai in A))
+print(all(Ai > 0 for Ai in A))	
+	
+#----------------------
+A = [1,2,3,4,0,1]
+S = set(A)
+uniq = len(A) == len(S)	
+	
+
+#----------------------
+def Fib(N):
+	a, b = 0, 1
+	while a < N:
+		yield a
+		a, b = b, a+b
+
+for a in Fib(100):
+	print(a)	
+	
+#----------------------	
+F = lambda x: F(x - 1) * x if x > 1 else 1
+print(F(100))	
+	
+#----------------------	
+from math import log10
+
+n = ((2**3)**4)**5
+print(n)
+
+#----------------------	
+for k in range(3,103,2):
+	n = (k**2+1)/2; n = int(n)
+	m = n-1
+	print(k, m, n, '--->',k**2, m**2, n**2)
+	
+# Последовательность Сиракузы
+aMax = 0
+iMax = 0
+a = 0
+while True:
+	a = a + 1
+	x = a
+	i = 0
+	while True:
+		#print(i, "-", x)
+		if x == 1: break
+
+		i = i + 1	
+		if x % 2 == 0:
+			x = x // 2
+		else:
+			x = 3*x + 1
+	if i > iMax:
+		iMax = i
+		aMax = a
+		print("x =", a, "i =", i)
+		
+		
+# Функция Эйлера
+def Eiler(n):
+	result = n
+	i=2
+	while i*i <= n:
+		if n % i == 0:
+			while n % i == 0:
+				n = n / i
+			result = result - result / i
+		i = i + 1
+	if n > 1:
+		result = result - result / n
+	return result
+	
+print(Eiler(10))
+
+#Пустой оператор
+pass
+
+#Отбор лучших пятёрок.
+def ArrayToStr(A):
+	s = "["
+	for i in range(len(A)):
+		if A[i] < 10:
+			s = s + ' '
+		s = s + str(A[i])
+		if i < len(A):
+			s = s + ', '
+	s = s + "]"
+	return(s)
+	
+N = 20
+M = 18
+
+A = [1, 2, 3, 4, 5]
+B = A
+
+current = 6
+
+i = 0
+print("{1:>2d} -".format(8,i), ArrayToStr(A))
+
+while i < M:
+	
+	j = (i % 5)	
+
+	for k in range(0,5):
+		if k != j:
+			B[k] = current
+			current = current + 1
+			if current > 20:
+				current = 1
+		else:
+			B[j] = A[j]
+
+			A = B
+		
+	i = i + 1
+	print("{1:>2d} -".format(8,i), ArrayToStr(A))
+
+#Документация по функции
+def f():
+    """ Функция f()"""
+    return
+
+print(f.__doc__)
+
+#-----------------------
+def max(*args):
+    if len(args) == 0: return
+    res = float("-inf")
+    for i in args:
+        if i > res: res = i
+    return res
+
+print( max() )
+
+#-----------------------
+def max(a1, *args):
+    res = a1
+    for i in args:
+        if i > res: res = i
+    return res]
+	
+#-----------------------
+def max(a1, *args, lo = float('-inf'), hi = float('inf')):
+    res = lo
+    for i in (a1, ) + args:
+        if i > res and lo <= i <= hi:
+            res = i
+    return res
+
+x = (-4,-5,-6,4)
+print( max(*x, lo = 5, hi = 10) )
+
+#-----------------------
+def unique(a):
+    s = set()
+    for i in a:
+        s.add(i)
+    return list(s)
+
+A = [3,4,5,4,5]
+res = unique(A)
+print(res)
+
+# Значения по умолчанию
+print(unique.__defaults__)
+
+# Значения по умолчанию
+def unique(a, s=None):
+    s = set(s or [])
+    for i in a:
+        s.add(i)
+    return list(s)
+
+A = {3,4,5}
+B = {3,-4,5,100}
+res = unique(A, B)
+
+# Уникальные элементы двух коллекций
+A = [3,4,5]
+B = [3,-4,5,100]
+
+print( list(set(A) | set(B)))
+
+# РАСПАКОВКА
+# И УПАКОВКА
+>>> def f(*args):
+...     print(args)
+... 
+>>> f(4)
+(4,)
+>>> f(5,4,4)
+(5, 4, 4)
+>>> f([5,4,4])
+([5, 4, 4],)
+>>> f(*[5,4,4])
+(5, 4, 4)
+
+# Упаковка ключевых элементов
+def Log(str, **kwargs):
+    for i in kwargs:
+        print(i,'=',kwargs[i])
+
+Log('Hi', level='high', type='sorted')
+
+A = {'level':'high', 'type':'sorted'}
+Log('Hi', **A)
+
+# Упаковка ( в список)
+first, *rest, last = range(1,10)
+first, rest, last
+(1, [2, 3, 4, 5, 6, 7, 8], 9)
+
+# Рекурсивная упаковка
+*_, (first, *rest) = [range(1,5)]*5
+_,first, rest
+([range(1, 5), range(1, 5), range(1, 5), range(1, 5)], 1, [2, 3, 4])
+
+# Дизассемблирование
+import dis
+dis.dis("first, *rest, last = [1,2,3]")
+  1           0 LOAD_CONST               0 (1)
+              2 LOAD_CONST               1 (2)
+              4 LOAD_CONST               2 (3)
+              6 BUILD_LIST               3
+              8 EXTENDED_ARG             1
+             10 UNPACK_EX              257
+             12 STORE_NAME               0 (first)
+             14 STORE_NAME               1 (rest)
+             16 STORE_NAME               2 (last)
+             18 LOAD_CONST               3 (None)
+             20 RETURN_VALUE
+dis.dis("first, *rest, last = (1,2,3)")
+  1           0 LOAD_CONST               4 ((1, 2, 3))
+              2 EXTENDED_ARG             1
+              4 UNPACK_EX              257
+              6 STORE_NAME               0 (first)
+              8 STORE_NAME               1 (rest)
+             10 STORE_NAME               2 (last)
+             12 LOAD_CONST               3 (None)
+             14 RETURN_VALUE
+dis.dis("first, *rest, last = {1,2,3}")
+  1           0 LOAD_CONST               0 (1)
+              2 LOAD_CONST               1 (2)
+              4 LOAD_CONST               2 (3)
+              6 BUILD_SET                3
+              8 EXTENDED_ARG             1
+             10 UNPACK_EX              257
+             12 STORE_NAME               0 (first)
+             14 STORE_NAME               1 (rest)
+             16 STORE_NAME               2 (last)
+             18 LOAD_CONST               3 (None)
+             20 RETURN_VALUE
+
+# Дизассемблирование
+default = {'ip': '192.168.0.0', 'port': '0000'}
+
+print(default)
+print({*default})
+print({**default, 'port':' 1022'})
+
+# ----------------
+a = [*range(0,5)]
+
+# ----------------
+def f():
+    def g(x):
+        return x //3
+    return g
+
+a = f()
+print (a(13))
+
+# ----------------
+def f():
+    print(i, end='-')
+for i in range(1,20):
+    f()
+	
+# ----------------
+l = lambda x:x**x
+print(l(5))
+
+# Функции высшего порядка
+def f(x):
+    return x*x
+a = list(map(f, range(1,20)))
+ # ----------------
+a = list(map(lambda x:x**2, range(1,20)))
+# ----------------
+a = list(map(lambda x,n:x**n, [2,3,5], [2,3,10]))		
+# ----------------
+a = list(filter(lambda x: x%2 == 0, range(1,100)))
+# ----------------
+a = list(filter(lambda x: x**2 < 100 , range(1,100)))
+# Фильтрация. Не брать falsy объекты, только truthy
+x = [*list(range(1,10)), None, [], {}, set(),0,""]
+print(x)
+a = list(filter(None, x))
+print(a)
+
+# Упаковка (также см. ниже)
+a = zip([1,2,3], ['a','b','c'], [{},[],set()])
+l = list(a)
+print(l)
+print(*l)
+
+# Эквивалентно
+a = map(lambda *args:args, [1,2,3], ['a','b','c'], [{},[],set()])
+
+# Генераторы списков (также см. ниже)
+a = [x**2 for x in range(10) if x%2 == 1]
+print(list(a))
+# Эквивалентно
+b = map(lambda x: x**2,
+        filter(lambda x: x%2 == 1,
+               range(10)))
+print(list(b))
+
+# Вложенные генераторы списков
+a = [range(1,6), range(10,15)]
+print(a)
+b = [x for range in a for x in range]
+print (b)
+# ---------------
+a = {x: x**2 for x in range(5)}
+
+# ---------------
+a = {1: 'Один', 2: 'Два', 3: '', 100: 'Сто'}
+print(a)
+s = {k: v for k, v in a.items() if v}
+print(s)
+
+# - Декоратор
+def trace(f):
+    def inner(*args, **kwargs):
+        print(f.__name__, args, kwargs)
+        return f(*args, *kwargs)
+    return inner
+@trace
+def square(x):
+    return x**2
+#square_t = trace(square)
+print(square(16))
+
+# --------------
+def trace(f):
+    """Trace function"""
+    def inner(*args, **kwargs):
+        """Inner function"""
+        print(f.__name__, args, kwargs)
+        return f(*args, *kwargs)
+    inner.__name__ = f.__name__
+    inner.__doc__ = f.__doc__
+    inner.__module__ = f.__module__
+    return inner
+
+@trace
+def square(x):
+    """Square function"""
+    return x**2
+
+#square = trace(square)
+
+print(square(16))
+print(square.__name__, square.__doc__, square.__module__, sep=' / ')
+
+# Равносильно
+import functools
+def trace(f):    
+    def inner(*args, **kwargs):
+        ...
+		return f(*args, *kwargs)
+    functools.update_wrapper(inner, f)
+    return inner
+
+# Или, что естесственнее
+import functools
+def trace(f):
+    @functools.wraps(f)
+    def inner(*args, **kwargs):
+		...
+        return f(*args, *kwargs)
+    return inner
+
+# Последовательность Фибонначи
+# Формула Бине
+from math import sqrt
+
+k = sqrt(5)
+
+def F(n):
+    f = ( ((1+k)/2)**n - ((1-k)/2)**n ) / k
+    return (int(f))
+
+Fs = []
+for i in range(1,50):
+    Fs.append(F(i))
+print(Fs)
+
+# Изменение глобальных переменных из функции
+def test():
+    global a
+    a += 1
+a = 10;
+print(a)
+
+
+#Копирование списков
+import copy
+A = ['Red', 'Blue', 'Green', 'Yellow', 'Orange']
+B = A
+C = A.copy()
+B[1] = 'Gold'
+print(A)
+print(B)
+print(C)
+D = [A,3,4]
+E = copy.deepcopy(D)
+D[0][0] = 'd'
+print(D)
+print(E)
+
+#Вероятность выпадания очков при бросании двух костей
+from random import randrange
+
+N = 10000
+
+p = 13*[0]
+
+for i in range(1,N+1):
+    s = randrange(1, 7) + randrange(1, 7)
+    p[s] = p[s] + 1
+
+r = 13*[0]
+d = [[],[],[],[],[],[],[],[],[],[],[],[],[]]
+for i in range (1,7):
+    for j in range(1,7):
+        s = i + j
+        r[s] += 1
+        st = str(i) + ":" + str(j)
+        d[s].append(st)
+
+for i in range(2,len(d)):
+    print(i, "- ", d[i])
+
+print()
+for i in range(2,len(r)):
+    print(i, " - ", r[i], ":", 100 * r[i] / 36.0, " e=", 100 * p[i] / N, sep="")
