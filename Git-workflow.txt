@@ -1,0 +1,25 @@
+git remote -v
+git remote add origin https://github.com/Skorpionos/CppLearning.git
+
+git clone https://github.com/Skorpionos/CppLearning.git
+
+git config -l
+git config --global color.ui true
+git config --global user.name 'Skorpion'
+git config --global user.email smartfonner@gmail.com
+
+git log --onelin
+
+git diff
+
+git add temp
+git commit -m 'init'
+
+git status
+
+find . -name *.cpp
+
+git rm -f temp
+
+git push -u origin master
+git push -u https://github.com/Skorpionos/CppLearning.git
