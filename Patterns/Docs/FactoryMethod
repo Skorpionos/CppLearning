@@ -1,0 +1,135 @@
+// Persons.h
+#pragma once
+
+#include <iostream>
+#include <memory>
+
+using std::cout;
+using std::endl;
+
+enum class WarriorType
+{
+    Infantryman,
+    Archer,
+    Horseman
+};
+
+class Warrior;
+
+typedef std::shared_ptr<Warrior> SharedWarrior;
+
+class Warrior
+{
+public:
+    virtual ~Warrior() = default;
+    virtual void info() = 0;
+    virtual WarriorType getType() = 0;
+};
+
+class Infantryman : public Warrior
+{
+public:
+    void info() override
+    {
+        cout << "Infantryman" << endl;
+    }
+    virtual WarriorType getType() override
+    {
+        return WarriorType::Infantryman;
+    }
+};
+
+class Archer : public Warrior
+{
+public:
+    void info() override
+    {
+        cout << "Archer" << endl;
+    }
+    virtual WarriorType getType() override
+    {
+        return WarriorType::Archer;
+    }
+};
+
+class Horseman : public Warrior
+{
+public:
+    void info() override
+    {
+        cout << "Horseman" << endl;
+    }
+
+    virtual WarriorType getType() override
+    {
+        return WarriorType::Horseman;
+    }
+};
+
+
+// Factory.h
+#pragma once
+
+#include "Persons.h"
+
+class Factory
+{
+public:
+    virtual ~Factory() = default;
+    virtual SharedWarrior Create() = 0;
+};
+
+class InfantrymanFactory : Factory
+{
+public:
+    virtual SharedWarrior Create() override
+    {
+        return std::make_shared<Infantryman>();
+    }
+
+};
+
+class ArcherFactory : Factory
+{
+public:
+    virtual SharedWarrior Create() override
+    {
+        return std::make_shared<Archer>();
+    }
+
+};
+
+class HorsemanFactory : Factory
+{
+public:
+    virtual SharedWarrior Create() override
+    {
+        return std::make_shared<Horseman>();
+    }
+
+};
+
+// main.cpp
+#include <iostream>
+#include <vector>
+
+#include "Factory.h"
+
+int main()
+{
+    auto infantryFactory = std::make_unique<InfantrymanFactory>();
+    auto archerFactory = std::make_unique<ArcherFactory>();
+    auto horsemanFactory = std::make_unique<HorsemanFactory>();
+
+    std::vector<SharedWarrior> men;
+
+    men.push_back(infantryFactory->Create());
+    men.push_back(archerFactory->Create());
+    men.push_back(horsemanFactory->Create());
+
+    for (const auto& every : men)
+        every->info();
+
+    return 0;
+}
+
