@@ -5,5 +5,21 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES
         main.cpp
-        Players/Player.cpp Players/Player.h Players/FieldPlayer.cpp Players/FieldPlayer.h Players/Goalkeeper.cpp Players/Goalkeeper.h Factories/PlayerFactory.cpp Factories/PlayerFactory.h Factories/FieldplayerFactory.cpp Factories/FieldplayerFactory.h Factories/GoalkeeperFactory.cpp Factories/GoalkeeperFactory.h)
+        Players/Player.cpp
+        Players/Player.h
+        Players/FieldPlayer.cpp
+        Players/FieldPlayer.h
+        Players/Goalkeeper.cpp
+        Players/Goalkeeper.h
+        Factories/PlayerFactory.cpp
+        Factories/PlayerFactory.h
+        Factories/FieldplayerFactory.cpp
+        Factories/FieldplayerFactory.h
+        Factories/GoalkeeperFactory.cpp
+        Factories/GoalkeeperFactory.h
+        Team.h
+        Team.cpp
+        Names.h
+        Names.cpp
+    )
 add_executable(001 ${SOURCE_FILES})

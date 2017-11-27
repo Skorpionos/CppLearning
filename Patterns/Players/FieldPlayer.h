@@ -5,7 +5,7 @@
 class FieldPlayer : public Player
 {
 public:
-    FieldPlayer(const std::string& name = "Unknown", uint16_t dateOfBirth = 2001);
+    FieldPlayer(const std::string& name = "Unknown", uint8_t age = ageDefault);
     virtual void Info() override;
 };
 

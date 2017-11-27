@@ -2,15 +2,12 @@
 
 #include <iostream>
 
-FieldPlayer::FieldPlayer(const std::string& name, uint16_t dateOfBirth)
-        : Player(name, dateOfBirth) { }
+FieldPlayer::FieldPlayer(const std::string& name, uint8_t age)
+        : Player(name, age) { }
 
 void FieldPlayer::Info()
 {
-    std::cout << "Field player: "
-              << GetName()
-              << ", "
-              << GetAge()
-              << " age"
-              << std::endl;
+    std::cout << "<" << GetId() << "> "
+              << "FieldPlayer: " << GetName() << ", "
+              << static_cast<uint16_t>(GetAge()) << " age" << std::endl;
 }

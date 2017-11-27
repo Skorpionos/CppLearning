@@ -133,3 +133,5 @@ int main()
     return 0;
 }
 
+//    std::vector<SharedFactory> factories = {std::make_shared<FieldplayerFactory>(),
+//                                            std::make_shared<GoalkeeperFactory>()};

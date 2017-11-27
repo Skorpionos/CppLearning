@@ -2,22 +2,21 @@
 #include "Players/FieldPlayer.h"
 #include "Factories/FieldplayerFactory.h"
 #include "Factories/GoalkeeperFactory.h"
+#include "Team.h"
 
 int main()
 {
+    srand(time(0));
 
-    std::vector<SharedFactory> factories = {std::make_shared<FieldplayerFactory>(),
-                                            std::make_shared<GoalkeeperFactory>()};
+    Team team1(std::make_shared<FieldplayerFactory>());
+    Team team2(std::make_shared<GoalkeeperFactory>());
 
-    size_t i = 1980;
-    for (auto factory : factories)
-    {
-        auto player = factory->Create("", i++);
-        player->Info();
-    }
+    team1.Print();
+    team2.Print();
 
     return 0;
 }
+
 
 
 
