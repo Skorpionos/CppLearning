@@ -2,16 +2,21 @@
 
 #include <string>
 #include <memory>
+#include <ostream>
 
 class Player;
 
 typedef std::shared_ptr<Player> SharedPlayer;
-constexpr uint8_t ageDefault = 16;
+
+constexpr uint8_t YoungPlayerAge = 16;
+
+constexpr uint8_t CareerPeriod = 20;
 
 class Player
 {
 public:
-    Player(const std::string& name = "Unknown", uint8_t age = ageDefault);
+    explicit Player(const std::string& name = "Unknown", uint8_t age = YoungPlayerAge);
+    friend std::ostream& operator<<(std::ostream& os, const Player& player);
     virtual ~Player() = default;
 
     Player(const Player&) = delete;
@@ -33,7 +38,7 @@ public:
 private:
     std::size_t m_Id;
     std::string m_Name;
-    std::uint8_t m_YearOfBirth;
+    std::uint16_t m_YearOfBirth;
 };
 
 

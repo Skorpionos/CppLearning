@@ -5,7 +5,7 @@
 class Goalkeeper : public Player
 {
 public:
-    Goalkeeper(const std::string& name = "Unknown", uint8_t age = ageDefault);
-    virtual void Info() override;
+    explicit Goalkeeper(const std::string& name = "Unknown", uint8_t age = YoungPlayerAge);
+    void Info() override;
 };
 

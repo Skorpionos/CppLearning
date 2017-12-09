@@ -1,17 +1,17 @@
-#include <vector>
-#include "Players/FieldPlayer.h"
 #include "Factories/FieldplayerFactory.h"
 #include "Factories/GoalkeeperFactory.h"
-#include "Team.h"
+#include "Players/Team.h"
 
 int main()
 {
-    srand(time(0));
+    srand(static_cast<unsigned>(time(nullptr)));
 
-    Team team1(std::make_shared<FieldplayerFactory>());
-    Team team2(std::make_shared<GoalkeeperFactory>());
-
+    auto factory1 = std::make_shared<FieldplayerFactory>();
+    Team team1(factory1);
     team1.Print();
+
+    auto factory2 = std::make_shared<GoalkeeperFactory>();
+    Team team2(factory1);
     team2.Print();
 
     return 0;

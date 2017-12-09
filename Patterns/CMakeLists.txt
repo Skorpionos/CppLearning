@@ -17,9 +17,8 @@ set(SOURCE_FILES
         Factories/FieldplayerFactory.h
         Factories/GoalkeeperFactory.cpp
         Factories/GoalkeeperFactory.h
-        Team.h
-        Team.cpp
-        Names.h
-        Names.cpp
-    )
+        Players/Team.h
+        Players/Team.cpp
+        Players/PersonNames.h
+        )
 add_executable(001 ${SOURCE_FILES})

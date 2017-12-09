@@ -2,8 +2,12 @@
 
 #include "PlayerFactory.h"
 
+#include <vector>
+
 class FieldplayerFactory : public PlayerFactory
 {
 public:
-    virtual SharedPlayer Create(const std::string& name = "Unknown", uint8_t age = ageDefault) override;
+    SharedPlayer Create(const std::string& name, uint8_t age) override;
+    SharedPlayer CreateRandom() override;
 };
+

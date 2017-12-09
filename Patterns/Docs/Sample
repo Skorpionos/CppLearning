@@ -32,3 +32,6 @@ SharedWarrior Warrior::Create(WarriorType type)
                                       Warrior::Create(WarriorType::Archer),
                                       Warrior::Create(WarriorType::Horseman)};
 
+// std::tuple<int, int> t
+//std::tie(a, b) = std::make_tuple(b, a);
+// if std::tie(a,b) == std::tie(c,c)
