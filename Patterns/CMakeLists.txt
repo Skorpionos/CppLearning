@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES
         main.cpp
+        Test.h
+        Test.cpp
         Players/Player.cpp
         Players/Player.h
         Players/FieldPlayer.cpp
