@@ -229,7 +229,7 @@ void sort(C& c)
 {
 	std::sort(c.begin(), c.end());
 }
-XZFSDFDSF
+
 template<typename C, typename Pred>
 // requires Container<C>() && Binary_Predicate<Value_type<C>>()
 void sort(C& c, Pred p)
