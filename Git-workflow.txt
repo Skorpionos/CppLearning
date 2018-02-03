@@ -60,6 +60,35 @@ git rm -f temp
 ls -l
 find . -name *.cpp
 
+#extract only one folder from repository
+https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/
+
+git clone https://github.com/Skorpionos/CppLearning analyzer
+cd analyzer
+git filter-branch --prune-empty --subdirectory-filter analyzer master
+git remote -v // check
+git remote set-url origin https://github.com/Skorpionos/analyzer.git
+git remote -v // check
+git push -u origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
